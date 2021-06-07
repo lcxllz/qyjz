@@ -1,0 +1,95 @@
+{layout name="public/layout" /}
+        <div class="x-body">
+            <xblock><button class="layui-btn" onclick="add();return false;"><i class="layui-icon">&#xe608;</i>添加</button></xblock>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            登录名
+                        </th>
+                        <th>
+                            角色
+                        </th>
+                        <th>
+                            注册时间
+                        </th>
+                        <th>
+                            上次登陆时间
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {volist name="adlist" id="ad" empty="$empty"}
+                    <tr>
+                        <td>
+                           {$ad.id}
+                        </td>
+                        <td>
+                           {$ad.user}
+                        </td>
+                        <td >
+                           {$ad.role_id}
+                        </td>
+                        <td >
+                           {$ad.create_time}
+                        </td>
+                        <td >
+                           {$ad.up_time}
+                        </td>
+                        <td class="td-status">
+                            {eq name="$ad.disable" value="1"}
+                            <span class="layui-btn layui-btn-normal layui-btn-mini">
+                                已启用
+                            </span>
+                            {else}
+                            <span class="layui-btn layui-btn-normal layui-btn-mini">
+                                已禁用
+                            </span>
+                            {/eq}
+                        </td>
+                        <td class="td-manage">
+                             <!-- 非当前用户是不允许编辑其它用户资料的 -->
+                            {eq name="$ad.id" value="$Think.session.admin_id"}
+                            <a title="编辑" href="{:url('admin/adminEdit',['id'=>$ad.id])}"
+                            class="ml-5" style="text-decoration:none">
+                                <i class="layui-icon">&#xe642;</i>
+                            </a>
+                            {/eq}
+
+                            <!-- 当前用户是不能自己删除自己的 -->
+                            {neq name="$ad.id" value="$Think.session.admin_id"}
+                            <a title="删除" href="" onclick="dele(id);return false;" 
+                            style="text-decoration:none">
+                                <i class="layui-icon">&#xe640;</i>
+                            </a>
+                            {/neq}
+                        </td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+
+            <div id="page"></div>
+        </div>
+        <script>
+
+            function dele()
+            {
+                if(confirm('您真的要删除吗?') == true){
+                    window.location.href = "{:url('admin/doDelete')}"+"?id="+id;           
+                }
+            }
+            function add()
+            {
+                    window.location.href = "./adminadd.html";  
+            }
+        </script>

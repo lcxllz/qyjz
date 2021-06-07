@@ -1,0 +1,118 @@
+{layout name="public/layout" /}
+        <div class="x-body">
+            <form action="{:url('khqdorder/doAdd')}" method="post">
+              
+                <div class="layui-form-item">
+                    <label for="qdtype" class="layui-form-label">
+                        <span class="x-red">*</span>抢单类型
+                    </label>
+                    <div class="layui-input-inline" >
+                        <select type="select" required="" lay-verify="required" name="qdtype" value="{$qytype}" 
+                        autocomplete="off" class="layui-input">
+                              <option value="0">新人专享</option>
+                              <option value="1">整点秒杀</option>
+                              <option value="2">限时秒杀</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">日期范围</label>
+                    <div class="layui-input-inline">
+                      <input class="layui-input" placeholder="开始时间" id="LAY_demorange_s">
+                    </div>
+                    <div class="layui-input-inline">
+                      <input class="layui-input" placeholder="截止时间" id="LAY_demorange_e">
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label for="sfgg" class="layui-form-label">
+                        <span class="x-red">*</span>服务项目
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="title" name="sid" required="" lay-verify="required" value="" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="sfgz" class="layui-form-label">
+                        <span class="x-red">*</span>数量
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="title" name="num" required="" lay-verify="required" value="" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" lay-filter="save" lay-submit="">
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            layui.use(['laydate','element','laypage','layer'], function(){
+                $ = layui.jquery;//jquery
+              laydate = layui.laydate;//日期插件
+              lement = layui.element();//面包导航
+              laypage = layui.laypage;//分页
+              layer = layui.layer;//弹出层
+
+              //以上模块根据需要引入
+
+              laypage({
+                cont: 'page'
+                ,pages: 100
+                ,first: 1
+                ,last: 100
+                ,prev: '<em><</em>'
+                ,next: '<em>></em>'
+              }); 
+              
+
+              var start = {
+ 
+              elem: '#start_time',//选择ID为START的input
+              event:'click',
+              format: 'YYYY-MM-DD',//自动生成的时间格式
+              istime: true,//必须填入时间
+              istoday: false, //是否是当天
+              start: laydate.now(0,"YYYY-MM-DD"), //设置开始时间为当前时间
+             
+              choose: function(datas){
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+             
+              }
+ 
+             };
+ 
+             var end = {
+             
+              elem: '#end_time',
+              format: 'YYYY-MM-DD',
+              istime: true,
+              istoday: false,
+              start: laydate.now(0,"YYYY-MM-DD"),
+              choose: function(datas){
+             
+               start.max = datas; //结束日选好后，重置开始日的最大日期
+             
+              }
+             };
+
+              document.getElementById('LAY_demorange_s').onclick = function(){
+                start.elem = this;
+                laydate(start);
+              }
+              document.getElementById('LAY_demorange_e').onclick = function(){
+                end.elem = this
+                laydate(end);
+              }
+              
+            });
+        </script>

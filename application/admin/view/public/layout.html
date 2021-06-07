@@ -1,0 +1,38 @@
+{include file="public:header" /}
+
+        <div class="layui-layout layui-layout-admin">
+
+
+            <div class="layui-header header header-demo">
+                <div class="layui-main">
+                    <!-- nav -->
+                {include file="public:nav" /}
+                    <!-- end nav -->
+                </div>
+            </div>
+
+<!-- left -->
+
+            <div class="layui-side layui-bg-black x-side">
+                <div class="layui-side-scroll">
+                    <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="side">
+                    {include file="public:left" /}
+                    </ul>
+                </div>
+
+            </div>
+
+<!-- my           -->
+            <div class="layui-tab layui-tab-card site-demo-title x-main" lay-filter="x-tab" lay-allowclose="true">
+                <div class="x-slide_left"></div>
+                <div class="layui-tab-content site-demo site-demo-body">
+                    <div class="layui-tab-item layui-show">
+                        {__CONTENT__}
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+<!-- footer -->
+{include file="public:footer" /}

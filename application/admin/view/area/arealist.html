@@ -1,0 +1,57 @@
+{layout name="public/layout" /}
+        <div class="x-body">
+            <xblock>
+                <button class="layui-btn" onclick="add();return false;"><i class="layui-icon">&#xe608;</i>添加</button>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            名称
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {volist name="adList" id="ad" empty="$empty"}
+                    <tr>
+                        <td>
+                           {$ad.id}
+                        </td>
+                        <td>
+                           {$ad.adname}
+                        </td>
+                        <td class="td-manage">
+                            <a title="编辑" href="{:url('area/areaEdit',['id'=>$ad.id])}"
+                            class="ml-5" style="text-decoration:none">
+                                <i class="layui-icon">&#xe642;</i>
+                            </a>
+                            <a title="删除" href="" onclick="dele({$ad.id});return false;" 
+                            style="text-decoration:none">
+                                <i class="layui-icon">&#xe640;</i>
+                            </a>
+                        </td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+
+            <div id="page"></div>
+        </div>
+<script>
+    function dele(id)
+    {
+        if(confirm('您真的要删除吗?') == true){
+            window.location.href = "{:url('area/doDelete')}"+"?id="+id;          
+        }
+    }
+    function add()
+    {
+            window.location.href = "./areaadd.html";  
+    }
+
+</script>

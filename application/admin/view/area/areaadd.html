@@ -1,0 +1,21 @@
+{layout name="public/layout" /}
+        <div class="x-body">
+            <form class="layui-form" action="{:url('area/doAdd')}" method="post">
+                <div class="layui-form-item">
+                    <label for="adname" class="layui-form-label">
+                        <span class="x-red">*</span>名称
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="adname" placeholder="输入服务区域名称" name="adname" required="" lay-verify="required" value="" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" lay-filter="save" lay-submit="">
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>

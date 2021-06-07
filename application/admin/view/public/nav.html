@@ -1,0 +1,17 @@
+<a class="logo" href="index/index">摆渡人后台管理系统</a>
+<ul class="layui-nav" lay-filter="">
+  <li class="layui-nav-item"><img src="/static/images/logo.png" class="layui-circle" style="border: 2px solid #A9B7B7;" width="35px" alt=""></li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">{$Think.session.admin_name}</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a href="{:url('admin/logout')}">退出</a></dd>
+    </dl>
+  </li>
+  <!-- <li class="layui-nav-item">
+    <a href="" title="消息">
+        <i class="layui-icon" style="top: 1px;">&#xe63a;</i>
+    </a>
+    </li> -->
+  <li class="layui-nav-item x-index"><a href="../index/index">回到首页</a></li>
+</ul>
+

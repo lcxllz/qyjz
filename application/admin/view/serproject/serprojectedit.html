@@ -1,0 +1,76 @@
+{layout name="public/layout" /}
+        <div class="x-body">
+            <form action="{:url('serproject/doEdit')}" method="post">
+                <div class="layui-form-item">
+                    <label for="sid" class="layui-form-label">
+                        <span class="x-red">*</span>服务类型
+                    </label>
+                    <div class="layui-input-inline" >
+                        <select type="select" required="" lay-verify="required" name="sid" value="{$proInfo.sid}" 
+                        autocomplete="off" class="layui-input">
+                        {volist name="serty" id="sc"}
+            
+                            <option value="{$sc['id']}" {if condition="$sc.id eq $proInfo.sid"}selected="selected"{/if}>{$sc['name']}</option>
+
+                        {/volist}
+                       <!-- {volist name="serty" id="sc"}
+                            <eq name="id" value="{$proInfo.sid}">
+                            <option value="{$sc['id']}" {if condition="$sc.id eq $proInfo.sid"}selected="selected"{/if}>{$sc['name']}</option>
+                            <else/>
+                            <option value="{$sc['id']}">{$sc['name']}</option>
+                            </eq>
+                        {/volist}
+                    -->
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="content" class="layui-form-label">
+                        <span class="x-red">*</span>服务内容
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="title" name="content" required="" lay-verify="required" value="{$proInfo.content}" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="sp" class="layui-form-label">
+                        <span class="x-red">*</span>视频
+                    </label>
+                    <div class="layui-input-inline">
+                        <img src="{$proInfo.sp}" width="100" class="img-rounded">
+                
+                    <input type="file" name="title_img" id="title_img">
+                    
+                
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="sfgg" class="layui-form-label">
+                        <span class="x-red">*</span>收费规格
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="title" name="sfgg" required="" lay-verify="required" value="{$proInfo.sfgg}"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="sfgz" class="layui-form-label">
+                        <span class="x-red">*</span>收费规则
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="title" name="sfgz" required="" lay-verify="required" value="{$proInfo.sfgz}" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" lay-filter="save" lay-submit="">
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>
